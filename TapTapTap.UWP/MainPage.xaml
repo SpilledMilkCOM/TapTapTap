@@ -1,0 +1,47 @@
+﻿<Page x:Class="TapTapTap.UWP.MainPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:viewModels="using:SM.TapTapTap.UWP.ViewModels"
+	  mc:Ignorable="d">
+
+	<Page.DataContext>
+		<viewModels:MainViewModel />
+	</Page.DataContext>
+
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<StackPanel Orientation="Horizontal"
+					Grid.Row="1"
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center">
+			<Button x:Name="uxTap"
+					Grid.Row="1"
+					Content="Tap"
+					Height="50"
+					Width="150"
+					Command="{Binding TapCommand}" />
+			<Button x:Name="uxPlay"
+					Grid.Row="1"
+					Content="Play"
+					Height="50"
+					Width="150"
+					Command="{Binding PlayCommand}" />
+		</StackPanel>
+
+		<TextBlock Grid.Row="2"
+				   Text="{Binding TapCount}" />
+
+		<ListBox x:Name="uxList"
+				 Grid.Row="3"
+				 ItemsSource="{Binding Taps}" />
+
+	</Grid>
+</Page>
